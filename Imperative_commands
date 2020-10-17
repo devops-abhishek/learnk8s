@@ -1,0 +1,3 @@
+#kubectl run --generator=run-pod/v1 nginx --image=nginx:alpine
+#kubectl run --generator=run-pod/v1 nginx --image=nginx:alpine --dry-run=client -o yaml
+#kubectl create deployment nginx --image=nginx:alpine --dry-run=client -o yaml
