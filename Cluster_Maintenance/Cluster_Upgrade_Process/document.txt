@@ -1,0 +1,23 @@
+k8S Support upto 3 minor releases. and for upgrade we need to go +1 minor release one by one. 
+
+Upgrade kubeadm
+Upgrade Master Node First (All Management funcation down).
+Then one by one Upgrade worker node.
+Manualy update kublet version.
+
+Mater :
+#kubectl upgrade plan
+#apt upgrade -y kubeadm=1.12.0-00
+#kubeadm upgrade apply v1.12.0
+#kubectl get nodes   /** still controlplane node is showing older version.
+#apt upgrade -y kubelet=1.12.0-00  /**Then upgrade kubelet
+#systemctl restart kubelet
+#kubectl get nodes   /** now master node is upgraded to 1.12
+
+Worker node :
+#kubectl drain node01
+#apt upgrade -y kubeadm=1.12.0-00
+#apt upgrade -y kubelet=1.12.0-00
+#kubeadm upgrade node config --kubelet-version v1.12.0
+#systemctl restart kubelet
+#kubectl uncordon node01

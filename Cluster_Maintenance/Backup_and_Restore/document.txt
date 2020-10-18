@@ -1,0 +1,18 @@
+Resource Configuration : Git repo's
+#kubectl get all --all-namespaces -o yaml > all-deploy-definition.yaml
+
+Other tools for backup 7 restore like : Velero(ARK)
+
+ETCD Cluster : take built-in snapshot.
+Backup :
+#export ETCDCTL_API=3
+#etcdctl snapshot save snapshot.db
+#etcdctl snapshot status snapshot.db
+Restore :
+#service kube-apiserver stop
+#etcdctl snapshot restore snapshot.db
+#service kube-apiserver start
+
+#ETCDCTL_API=3 etcdctl --endpoints=https://[127.0.0.1]:2379 --cacert=/etc/kubernetes/pki/etcd/ca.crt --cert=/etc/kubernetes/pki/etcd/server.crt --key=/etc/kubernetes/pki/etcd/server.key snapshot save /opt/snapshot-pre-boot.db
+
+Persistent Volumes
