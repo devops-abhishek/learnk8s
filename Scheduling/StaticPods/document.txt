@@ -1,0 +1,2 @@
+If there is No Master Node, in that case we can schedule the pods using kubelet which is know as static pods.
+place the pod yaml files inside this folder /etc/kubernetes/manifests/ kubelet periodically checks the files inside this folder and create static pods.

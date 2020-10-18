@@ -1,0 +1,11 @@
+Taint : Nodes
+Toleration : K8s Objects(Pod)
+
+#kubectl taint nodes <node-name> key=value:taint-effect
+
+#kubectl taint nodes node01 app=blue:NoSchedule
+
+**taint-effect 
+    NoSchedule
+    PreferNoSchedule
+    NoExecute

@@ -1,0 +1,4 @@
+NodeAffinity Types:
+requiredDuringSchedulingIgnoredDuringExecution
+preferredDuringSchedulingIgnoredDuringExecution
+requiredDuringSchedulingRequiredDuringExecution
