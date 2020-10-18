@@ -1,0 +1,14 @@
+#kubectl apply -f deployment-definition.yaml
+#kubectl rollout status deployment/nginx-deploy
+#kubectl rollout history deployment/nginx-deploy
+
+Deployment Strategy :
+    Recreate
+    RollingUpdate (Default)
+
+Every deployment create a revision and we can check this on history
+
+#kubectl set image deployment/nginx-deploy nginx=nginx:1.9.1
+#kubectl describe deployment nginx-deploy
+#kubectl get replicasets
+#kubectl rollout undo deployment nginx-deploy
