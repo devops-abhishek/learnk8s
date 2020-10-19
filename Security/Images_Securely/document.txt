@@ -1,0 +1,15 @@
+Create secret with docker login details :
+#kubectl create secret docker-registry regcred --docker-server=<> --docker-username=<> --docker-passowrd=<> --docker-email=<>
+
+#kubectl create secret docker-registry private-reg-cred --docker-username=dock_user --docker-password=dock_password --docker-server=myprivateregistry.com:5000 --docker-email=dock_user@myprivateregistry.com
+
+Create a secret object with the credentials required to access the registry
+
+Solutions that Support network policies:
+kube-router
+Calico
+Romana
+Weave-network
+
+Solutions that DO not Support network policies:
+Flannel

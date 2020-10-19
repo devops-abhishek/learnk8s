@@ -1,0 +1,21 @@
+apiVersion: certificates.k8s.io/v1beta1
+kind: CertifacteSigningRequest
+metadata:
+  name: abhishek
+spec:
+  groups:
+  - system:authenticated
+  usages:
+  - digital signature
+  - key encipherment
+  - server auth
+  requests:
+   <base64 encoded csr>
+
+
+#kubectl get csr
+#kubectl certificate approve abhishek
+#kubectl get csr abhishek -o yaml
+## Convert base64 decode certificate and share it with user
+# ALL CSR related activity is performed by Controller Manager
+# Controller Manager : CSR-APPROVING and CSR-SIGNING

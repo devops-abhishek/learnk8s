@@ -1,0 +1,19 @@
+Password based authentication disabled
+ SSH Key based authentication
+
+Who can access?
+❑ Files – Username and Passwords
+❑ Files – Username and Tokens
+❑ Certificates
+❑ External Authentication providers - LDAP
+❑ Service Accounts
+
+What can they do?
+❑ RBAC Authorization : Role Based Authorization Control
+❑ ABAC Authorization : Attribute Based Authorization Control
+❑ Node Authorization
+❑ Webhook Mode
+
+Communication happen on TLS Certifacte b/w components.
+
+Communication b/w the applications within the cluster can be restricted using n/w polices.

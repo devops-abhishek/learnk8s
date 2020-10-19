@@ -1,0 +1,38 @@
+Core group API :
+
+/api :
+  namespaces
+  pods
+  rc
+  events
+  endpoints
+  nodes
+  bindings
+  pv
+  pvc
+  configmaps
+  secrets
+  services
+
+Named group APIs :
+
+/apis :
+  /apps
+   /v1
+     deployments
+     replicasets
+     statefulsets
+  /extensions
+  /networking.k8s.io
+   /v1
+     networkpolicies
+  /storage.k8s.io
+  /authentication.k8s.io
+  /authorization.k8s.io
+  /certificates.k8s.io
+    /v1
+      certificatesigningrequests
+ 
+API Groups : /apps, /extensions, /networking.k8s.io............
+resources : deployment, replicasets, statefulsets........
+verbs: list, get, watch, create, delete, update..........

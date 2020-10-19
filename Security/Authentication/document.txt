@@ -1,0 +1,14 @@
+Usres : 
+    Admins
+    Developers
+Service Accounts:
+    Bots
+
+** k8s does not manage user account natively instead it rallies on third party service like LDAP.
+   But it can create serviceaccount.
+
+kubectl or API request for authentication first recieved at API Server.
+Static Username and Password file
+Static Username and Token file.
+Certifactes
+Identivity Services (LDAP)

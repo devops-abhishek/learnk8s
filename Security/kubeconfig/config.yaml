@@ -1,0 +1,20 @@
+apiVersion: v1
+kind: Config
+current-context: abhishek@dev
+clusters:
+- name: dev
+  cluster:
+    certificate-authority: ca.crt
+    server: https://<dev-api-server>:6443
+contexts:
+- name: abhishek@dev
+  context:
+    cluster: dev
+    user: abhishek
+users:
+- name: abhishek
+  user:
+    client-certificate: abhishek.crt
+    client-key: abhishek.key
+
+#kubectl config view

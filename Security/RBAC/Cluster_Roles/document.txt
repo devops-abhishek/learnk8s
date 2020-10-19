@@ -1,0 +1,23 @@
+
+Namespaced Scope :
+    pods
+    replicasets
+    jobs
+    deployments
+    services
+    secrets
+    roles
+    rolebindings
+    configmaps
+    pvc
+#kubectl api-resources --namespaced=true
+
+Cluster Scope :
+    nodes
+    pv
+    clusterroles
+    clusterrolebindings
+    certificatesSigningrequests
+    namespaces
+#kubectl api-resources --namespaced=false
+used for: cluster admin, storage admin etc

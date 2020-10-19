@@ -1,0 +1,130 @@
+TLS : Transport Layer Security
+❑ What are TLS Certificates?
+❑ How does Kubernetes use Certificates?
+❑ How to generate them?
+❑ How to configure them?
+❑ How to view them?
+❑ How to troubleshoot issues related to Certificates
+
+certificate is used to guarantee trust between two parties.
+Without ssl/tls certificate http request is plain text format request.
+
+Symmetric Encryption : Data + Client encryption key (But uses same key to encrpt and decrpt the data)
+
+ASymmetric Encryption : Private + Public key
+
+To generate the ssh private and public key:
+#ssh-keygen
+
+To generate the web private and public key:
+Private Key
+#openssl genrsa -out abhishekchordia.key 4096
+Public key
+#openssl rsa -in abhishekchordia.key -pubout > abhishekchordia.pem
+
+CSR :
+#opensll req -new -key abhishekchordia.key -out abhishekchordia.csr -sub...............
+
+All browser is having certificate validation mechanism.
+
+Whole infra for this TLS certificate is know as PKI : Public Key Infrastructure
+
+Public Key :
+*.crt or *.pem
+server.crt or server.pem
+client.crt or client.pem
+
+Private Key :
+*.key or *.key.pem
+server.key or server.key.pem
+client.key or client.key.pem
+
+
+In total 3 type of certificate :
+    Server certificate
+    Root certificate
+    Client certificate
+
+How to generate the certificate for cluster :
+easyrsa
+openssl
+cfssl
+
+Generate Certificate for CA : 
+Generate key 
+#openssl genrsa -out ca.key 2048
+certificate Signing Authority
+#openssl req -new -key ca.key -subj "/CN=KUBERNETES_CA" -out ca.csr
+Sign Certificates
+#openssl x509 -req -in ca.csr -signkey ca.key -out ca.crt
+
+Admin(User) Client Certificate : 
+Generate key 
+#openssl genrsa -out admin.key 2048
+certificate Signing Authority
+#openssl req -new -key admin.key -subj "/CN=kube-admin/0=system:masters" -out admin.csr
+Sign Certificates
+#openssl x509 -req -in admin.csr -CA ca.crt -CAkey ca.key -out admin.crt
+
+
+Kube Scheduler Client Certificate : 
+Generate key 
+#openssl genrsa -out scheduler.key 2048
+certificate Signing Authority
+#openssl req -new -key scheduler.key -subj "/CN=system:kube-schduler" -out scheduler.csr
+Sign Certificates
+#openssl x509 -req -in scheduler.csr -CA ca.crt -CAkey ca.key -out scheduler.crt
+
+Kube Controller Mamager Client Certificate : 
+Generate key 
+#openssl genrsa -out controller-manager.key 2048
+certificate Signing Authority
+#openssl req -new -key controller-manager.key -subj "/CN=system:kube-controller-manager" -out controller-manager.csr
+Sign Certificates
+#openssl x509 -req -in controller-manager.csr -CA ca.crt -CAkey ca.key -out controller-manager.crt
+
+Kube Proxy Client Certificate : 
+Generate key 
+#openssl genrsa -out kube-proxy.key 2048
+certificate Signing Authority
+#openssl req -new -key kube-proxy.key -subj "/CN=system:kube-proxy" -out kube-proxy.csr
+Sign Certificates
+#openssl x509 -req -in kube-proxy.csr -CA ca.crt -CAkey ca.key -out kube-proxy.crt
+
+Kube API Server  Certificate : 
+Generate key 
+#openssl genrsa -out apiserver.key 2048
+certificate Signing Authority
+#openssl req -new -key apiserver.key -subj "/CN=system:kube-api server" -out apiserver.csr
+Sign Certificates
+#openssl x509 -req -in apiserver.csr -CA ca.crt -CAkey ca.key -out apiserver.crt
+
+ETCD Server Certificate : 
+Generate key 
+#openssl genrsa -out etcdserver.key 2048
+Create openssl config file for alternative names :
+openssl.conf
+        DNS.1 = kubernetes
+        DNS.2 = kubernetes.default
+        DNS.3= kubernetes.default.svc
+        DNS.3= kubernetes.default.svc.cluster.local
+        IP.1 = 127.0.0.1
+        IP.2 = x.x.x.x
+certificate Signing Authority
+#openssl req -new -key etcdserver.key -subj "/CN=system:etcd-server" -out etcdserver.csr -config openssl.conf
+Sign Certificates
+#openssl x509 -req -in etcdserver.csr -CA ca.crt -CAkey ca.key -out etcdserver.crt
+
+Kubelet Certificate : 
+Generate key 
+#openssl genrsa -out node01.key 2048
+certificate Signing Authority
+#openssl req -new -key node01.key -subj "/CN=system:node:node01/Osystem:nodes" -out node01.csr
+Sign Certificates
+#openssl x509 -req -in node01.csr -CA ca.crt -CAkey ca.key -out node01.crt
+
+To Decode Certifacte :
+#openssl x509 -in /etc/kubernetes/pki/apiserver.crt -text -noout 
+
+Test admin certificate :
+#curl https://kube-apiserver:6443/api/v1/pods --key admin.key --cert admin.crt -cacert ca.crt
