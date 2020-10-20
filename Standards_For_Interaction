@@ -1,0 +1,7 @@
+All standard are Universal Standard:
+Container Runtime Interface (CRI) :
+How orchestration(i.e. Kubernetes) tool will coomunicate with Container(Docker, rkt, cri-o) Runtime
+
+Container Storage Interface (CSI) :
+
+Container Network Interface (CNI) :

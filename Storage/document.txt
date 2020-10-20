@@ -1,0 +1,50 @@
+Storage Driver :
+docker storage driver and file system
+/var/lib/docker
+    /aufs
+    /containers
+    /images
+    /volumes
+
+Layered Architecture : docker build images in layered architecture
+
+Image Layer : Read Only
+Container Layer : Read-Write (COPY-ON_WRITE)
+
+#docker volume create data_volume
+/var/lib/docker
+    /volume
+        /data_volume
+volume mount :
+#docker run -v data_volume:/var/lib/mysql mysql
+bind mount :
+#docker run -v /external_disk/data_volume:/var/lib/mysql mysql
+
+New way of Mounting : 
+#docker run --mount type=bind,source=/external_disk/data_volume,target=/var/lib/mysql mysql
+
+Some of common Storage Driver names :
+aufs : ubuntu
+zfs
+btrfs
+device mapper : centos
+overlay
+overlay2
+
+Volume Driver :
+Volume Driver name :
+Local (default on Docker Host)
+Azure file storage
+Convoy
+DigitalOcean Block Storage
+Flock
+gce-docker
+GlusterFS
+MetApp
+RexRay
+PortWorx
+VMware vsphere storage
+
+#docker run -it --name=mysql --volume-driver rexray/ebs --mount src=ecs-vol,target=/var/lib/mysql mysql
+
+Container Storage Interface (CSI)
