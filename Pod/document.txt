@@ -1,0 +1,7 @@
+kubectl apply -f pod-definition.yaml
+kubectl describe pod pod-definition.yaml
+
+imagePullPolicy:
+    IfNotPresent  (default)
+    Always
+    Never
