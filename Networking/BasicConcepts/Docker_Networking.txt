@@ -1,0 +1,14 @@
+Docker Networking :
+
+None Network: No n/w communication b/w containers and external world.
+#docker run --network nonde nginx
+
+Host Network : container is attached with Host network
+#docker run --network host nginx
+
+Bridge Network : container is attached with Bridge network(Internal Private network): 172.17.0.0
+#docker run nginx
+
+#docker network ls
+#ip link   ---->docker0 network interface (172.17.0.1/24)
+#ip netns

@@ -1,0 +1,45 @@
+Switching and Routing
+    • Switching
+    • Routing
+    • Default Gateway
+    • NAT
+Linux Interfaces for Virtual Networking
+    • Bridge Network
+    • VLAN
+    • VXLAN
+IP Address Management & Name Resolution
+    • DNS
+    • IPAM
+    • DHCP
+Firewalls
+Load-Balancers
+Tools:
+    • Ping
+    • NC - NetCat
+    • TCPDUMP
+    • IPTABLES
+
+Switching : We have same n/w but different IP's 
+    #ip link
+    #ip addr add 192.168.1.10/24 dev eth0 
+Routing : Where we have two different networks.
+
+Gateway :
+    #ip route add 192.168.1.0/24 via 192.168.2.1
+    #ip route add 192.168.2.0/24 via 192.168.1.1
+    #ip route add default via 192.168.2.1  or  #ip route add 0.0.0.0 via 192.168.2.1
+    #ip route add default via 192.168.1.1  or  #ip route add 0.0.0.0 via 192.168.1.1
+    #route
+
+
+Linux host as a router : 
+A : eth0 = 192.168.1.0
+B : eth0 = 192.168.1.0 and eth1 =192.168.2.0   (IP: 192.168.1.6 and 192.168.2.6)
+C : eth0 =192.168.2.0
+
+#ip route add 192.168.2.0/24 via 192.168.1.6
+#ip route add 192.168.1.0/24 via 192.168.2.6
+
+cat /etc/sysctl.conf
+    net.ipv4.ip_forward = 1
+

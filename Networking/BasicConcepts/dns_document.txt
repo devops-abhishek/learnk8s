@@ -1,0 +1,3 @@
+#cat /etc/resolve.conf
+    nameserver 192.168.1.100
+    nameserver 8.8.8.8
