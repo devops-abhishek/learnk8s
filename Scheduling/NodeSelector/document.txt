@@ -1,2 +1,2 @@
-kubectl label nodes <node-name> <label-key>:<label-value>
-kubectl label nodes node01 size:Large
+kubectl label nodes <node-name> <label-key>=<label-value>
+kubectl label nodes node01 size=Large
