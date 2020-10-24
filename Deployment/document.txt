@@ -1,0 +1,38 @@
+Imperative command:
+kubectl create deployment nginx --image=nginx --dry-run -o yaml
+
+Declartive :
+kubectl apply -f deployment-definition.yaml --record
+
+kubectl rollout status deploy nginx-deploy
+kubectl rollout history deploy nginx-deploy
+kubectl rollout history deployment.v1.apps/nginx-deployment --revision=2
+kubectl rollout undo deploy nginx-deploy
+kubectl rollout undo deploy nginx-deploy --to-revision=2
+kubectl get deployment
+kubectl get replicaset
+kubectl set image deployment nginx-deploy nginx-container=nginx:latest --record
+kubectl describe deployments nginx-deploy
+
+By Default : 
+at least 75% of Desired Pods are UP.
+25% max unavailable.
+at most 125% of Desired Pods are UP.
+25% max unavailable.
+
+If Horizontal Pod autoscaling is enabled : 
+kubectl autoscale deployment nginx-deploy --min=2 --max=5 --cpu-percent=80
+kubectl get hpa
+
+Proportional scaling 
+
+
+Strategy:
+    Recreate
+    RollingUpdate
+
+
+
+
+
+**pod-template-hash
