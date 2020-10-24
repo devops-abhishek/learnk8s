@@ -1,0 +1,14 @@
+Within the same namespaces : 
+Application can communicate with svc or pod name to each other
+db-service
+
+Outside the namespace call : 
+FQDN : db-service.dev.svc.cluster.local
+
+cluster.local : is a default domain name of the cluster
+svc : service
+dev: namespace
+db-service : service name
+
+change namespace context : 
+#kubectl config set-context $(kubectl config current-context) --namespace=dev
