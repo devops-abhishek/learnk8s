@@ -1,0 +1,3 @@
+kubectl create -f replicaset-definition.yaml
+kubectl scale --replicas=10 replicaset nginx-rs
+kubectl delete replicaset nginx-rs
