@@ -40,6 +40,9 @@ C : eth0 =192.168.2.0
 #ip route add 192.168.2.0/24 via 192.168.1.6
 #ip route add 192.168.1.0/24 via 192.168.2.6
 
-cat /etc/sysctl.conf
+#cat /proc/sys/net/ipv4/ip_forward
+    0 - default value (no forward)
+    1 - (forward)
+#cat /etc/sysctl.conf
     net.ipv4.ip_forward = 1
 

@@ -1,0 +1,17 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: ingress
+spec:
+  rules:
+  - http:
+      paths:
+      - path: /nginx
+        backend:
+          serviceName: nginx
+          servicePort: 80
+
+      - path: /httpd
+        backend:
+          serviceName: httpd
+          servicePort: 80

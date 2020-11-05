@@ -1,4 +1,4 @@
-N/w namespaces is linux are used by containers like docker to implement network isolation.
+N/w namespaces is used in linux containers like docker to implement network isolation.
 
 Create Network Namespace:
 
@@ -27,9 +27,32 @@ $ip link
 #ip netns exec red arp
 #ip netns exec blue arp
 
+Delete cable:
+#ip -n red link del veth-red
+
 Linux Bridge
 #ip link add v-net-0 type bridge
 #ip link
-#i[ link set dev v-net-0 up]
+#ip link set dev v-net-0 up
+#ip link add veth-red type veth peer name veth-red-br
+#ip link add veth-blue type veth peer name veth-blue-br
+#ip link set veth-red netns red
+#ip link set veth-blue netns blue
+#ip link set veth-red-br master v-net-0
+#ip link set veth-blue-br master v-net-0
+#ip -n red addr add 192.168.15.1 dev veth-red
+#ip -n blue addr add 192.168.15.2 dev veth-blue
+#ip -n red link set veth-red up
+#ip -n blue link set veth-blue up
+#ip netns exec red ping 192.168.15.2
+#ip addr add 192.168.15.5/24 dev v-net-0
+
+
+FAQ:
+While testing the Network Namespaces, if you come across issues where you can't ping one namespace from the other, make sure you set the NETMASK while setting IP Address. ie: 192.168.1.10/24
+ip -n red addr add 192.168.1.10/24 dev veth-red
+Another thing to check is FirewallD/IP Table rules. Either add rules to IP Tables to allow traffic from one namespace to another. Or disable IP Tables all together (Only in a learning environment).
+
+
 
 OvS (Open vSwitch)

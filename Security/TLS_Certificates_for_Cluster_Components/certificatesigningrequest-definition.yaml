@@ -18,4 +18,4 @@ spec:
 #kubectl get csr abhishek -o yaml
 ## Convert base64 decode certificate and share it with user
 # ALL CSR related activity is performed by Controller Manager
-# Controller Manager : CSR-APPROVING and CSR-SIGNING
+# Controller Manager : CSR-APPROVING and CSR-SIGNING controller

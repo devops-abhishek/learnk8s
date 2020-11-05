@@ -1,0 +1,12 @@
+Add below parameter in kube-api server definition file.
+
+Case 1:
+--basic-auth-file=user-details-username-password.txt
+Test : 
+#curl -v -k https://master-node-ip:6443/api/v1/pods -u "abhishek:password"
+
+Case 2:
+--token-auth-file=user-details-username-token.txt
+Test :
+#curl -v -k https://master-node-ip:6443/api/v1/pods --header "Authorization: Bearer .........."
+

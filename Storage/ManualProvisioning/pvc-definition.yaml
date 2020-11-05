@@ -7,4 +7,7 @@ spec:
      - ReadWriteOnce
    resources:
      requests:
-      storage: 10Gi
+      storage: 9Gi
+  #  selector:
+  #   matchLabels:
+  #     name: my-pv
