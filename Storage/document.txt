@@ -1,5 +1,3 @@
-Storage Driver :
-docker storage driver and file system
 /var/lib/docker
     /aufs
     /containers
@@ -32,12 +30,12 @@ overlay
 overlay2
 
 Volume Driver :
-Volume Driver name :
+Volume Driver Plugin :
 Local (default on Docker Host)
 Azure file storage
 Convoy
 DigitalOcean Block Storage
-Flock
+Flocker
 gce-docker
 GlusterFS
 MetApp

@@ -18,21 +18,14 @@ By Default :
 at least 75% of Desired Pods are UP.
 25% max unavailable.
 at most 125% of Desired Pods are UP.
-25% max unavailable.
+25% max surge.
 
 If Horizontal Pod autoscaling is enabled : 
 kubectl autoscale deployment nginx-deploy --min=2 --max=5 --cpu-percent=80
 kubectl get hpa
 
-Proportional scaling 
-
-
 Strategy:
     Recreate
     RollingUpdate
-
-
-
-
 
 **pod-template-hash

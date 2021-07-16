@@ -1,0 +1,1 @@
+#kubectl auth can-i create deployments --as user1

@@ -1,7 +1,7 @@
 Docker Networking :
 
 None Network: No n/w communication b/w containers and external world.
-#docker run --network nonde nginx
+#docker run --network none nginx
 
 Host Network : container is attached with Host network
 #docker run --network host nginx

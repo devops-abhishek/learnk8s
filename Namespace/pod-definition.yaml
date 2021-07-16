@@ -2,7 +2,7 @@ apiVersion: v1
 kind: Pod
 metadata:
   name: nginx-pod
-  namespace: test
+  namespace: dev
   labels:
     app: nginx
 spec:

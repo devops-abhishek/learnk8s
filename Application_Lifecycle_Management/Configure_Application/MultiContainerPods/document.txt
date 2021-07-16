@@ -1,4 +1,4 @@
 Design Pattern :
-    sidecar
-    adaptor
-    ambassador
+    sidecar : Main application and helper application(Monitoring Agent : Log push(splunk))
+    adaptor : simplifies the monitoring output for service
+    ambassador : connect the external service and main container will connect on localhost using proxying

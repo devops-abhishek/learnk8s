@@ -4,16 +4,12 @@ metadata:
   name: ubuntu-pod
   labels:
     app: ubuntu
+    env: test
 spec:
   containers:
     - name: ubuntu-container
       image: ubuntu
-      command: ["sleep"]
-      args: ["100"]
-      resources:
-        limits:
-          cpu: 500m
-          memory: 256Mi
-        requests:
-          cpu: 256m
-          memory: 256Mi
+      command:
+        - "sleep"
+        - "10"
+  restartPolicy: OnFailure

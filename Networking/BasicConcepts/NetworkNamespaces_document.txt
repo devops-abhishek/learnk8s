@@ -1,4 +1,4 @@
-N/w namespaces is used in linux containers like docker to implement network isolation.
+N/w namespaces is used in linux containers like docker to implement isolation b/w containers.
 
 Create Network Namespace:
 

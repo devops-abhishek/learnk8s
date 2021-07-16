@@ -1,0 +1,52 @@
+TO LIST THE NODES DETAILS:
+#kubectl get nodes
+
+TO LIST THE K8S OBJECTS:
+#kubectl api-resources
+
+TO CREATE RESOURCES:
+#kubectl create -f <file-name>
+
+TO DELETE RESOURCES:
+#kubectl delete -f <file-name>
+#kubectl delete <object> <object-name>
+
+TO UPDATE RESOURCES:
+#kubectl replace -f <file-name>
+#kubectl edit <object> <object-name>
+
+TO CHECK THE IMAGE USED BY POD:
+#kubectl describe pod <pod-name> | grep -i Image:
+
+TO CHECK THE RESOURCES ON EACH NODE: 
+kubectl get node -o custom-columns=Name:.metadata.name,CAPACITY:.status.capacity.memory,CPU:.status.capacity.cpu
+
+TO LIST THE PODS IN DEFAULT NAMESPACE:
+#kubectl get pods
+
+TO LIST THE PODS IN ALL NAMESPACES:
+#kubectl get pods --all-namespaces
+
+TO LIST THE PODS IN dev NAMESPACE:
+#kubectl get pods -n dev
+
+TO CREATE A POD:
+#kubectl run nginx --image nginx
+
+LIST PODS ARE PLACED ON WHICH NODES:
+#kubectl get pods -o wide
+
+DELETE POD:
+#kubectl delete pod <pod-name>
+
+TO SCALE NUMBER OF PODS IN REPLICASET:
+#kubectl scale --replicas=10 replicaset nginx-rs
+
+SET DIFFERENT NAMESPACE IN CONTEXT:
+#kubectl config set-context $(kubectl config current-context) --namespace=dev
+
+MONITOR NODES and PODS UTILIZATION:
+REF URL : https://github.com/kubernetes-sigs/metrics-server
+#kubectl apply -f https://github.com/kubernetes-sigs/metrics-server/releases/latest/download/components.yaml
+#kubectl top nodes
+#kubectl top pods

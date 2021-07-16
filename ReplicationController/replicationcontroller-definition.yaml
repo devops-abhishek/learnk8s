@@ -2,23 +2,28 @@ apiVersion: v1
 kind: ReplicationController
 metadata:
   name: nginx-rc
+  labels:
+    app: nginx
+    env: test
 spec:
   template:
     metadata:
       name: nginx-pod
       labels:
         app: nginx
+        env: test
     spec:
       containers:
         - name: nginx-container
-          image: nginx:alpine
+          image: nginx
           resources:
-            limits:
-              cpu: 500m
-              memory: 256Mi
             requests:
               cpu: 250m
               memory: 256Mi
+            limits:
+              cpu: 500m
+              memory: 512Mi
   replicas: 2
   selector:
     app: nginx
+    env: test
