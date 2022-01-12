@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: Pod
 metadata:
-  name: sandeep-pod
+  name: abhishek-pod
   labels:
     app: nginx
     env: prod
